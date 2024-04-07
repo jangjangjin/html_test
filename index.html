@@ -16,8 +16,9 @@
     const root = document.querySelector("body");
 
     // 인자는 하나다 2개는 없다 보낸 모든게 다 오브젝트가 된다.
-    // 오브젝트여서 중괄호로 열여야한다.
-    function Btn({ banana, text }) {
+    // 오브젝트여서 중괄호로 열여야한다
+    // 중요
+    function Btn({ banana, text, big }) {
       return (
         <button
           style={{
@@ -26,6 +27,7 @@
             padding: "10px 20px",
             border: 0,
             borderRadius: 10,
+            fontSize: big ? 18 : 16,
           }}
         >
           {banana}
@@ -37,8 +39,8 @@
     function App() {
       return (
         <div>
-          <Btn banana="Save Chang" />
-          <Btn text="Continue" />
+          <Btn banana="Save Chang" big={true} />
+          <Btn text="Continue" big={false} />
         </div>
       );
     }
