@@ -11,133 +11,34 @@
   "></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
   <script type="text/babel">
     const root = document.querySelector("body");
 
-    function MinutesToHours() {
-      const [amount, setAmount] = React.useState(0);
-      const [flipped, setFlipped] = React.useState(false);
-      const onChange = (e) => {
-        setAmount(e.target.value);
-      };
-
-      const reset = (e) => {
-        setAmount(0);
-      };
-
-      const onFlip = (e) => {
-        // 이렇게 쓰는 것 보다
-        //setFlipped(!flipped);
-        // 정확하게 명제 해주는게 더 좋다
-        reset();
-        setFlipped((current) => !current);
-      };
+    // 인자는 하나다 2개는 없다 보낸 모든게 다 오브젝트가 된다.
+    function Btn(props) {
+      console.log(props);
       return (
-        <div>
-          <div>
-            <label for="minutes">Minutes</label>
-            <input
-              id="minutes"
-              type="number"
-              placeholder="Minutes"
-              style={{ backgroundColor: "blue" }}
-              onChange={onChange}
-              // 삼항 연산자 true면 amount*60 값을 아니면 그대로 amount
-              value={flipped ? amount * 60 : amount}
-              disabled={flipped}
-            />
-          </div>
-          <div>
-            <label for="hourse">Hours</label>
-            <input
-              id="hourse"
-              type="number"
-              placeholder="Hours"
-              style={{ color: "blue" }}
-              onChange={onChange}
-              // 삼항 연산자 true면 amount 값을 그대로 아니면 /60
-              value={flipped ? amount : Math.round(amount / 60)}
-              disabled={!flipped}
-            />
-          </div>
-          <button onClick={reset}>Reset</button>
-          <button onClick={onFlip}>Flip</button>
-        </div>
-      );
-    }
-
-    function KmToMiles() {
-      const [amount, setAmount] = React.useState(0);
-      const [flipped, setFlipped] = React.useState(false);
-      const onChange = (e) => {
-        setAmount(e.target.value);
-      };
-
-      const reset = (e) => {
-        setAmount(0);
-      };
-
-      const onFlip = (e) => {
-        // 이렇게 쓰는 것 보다
-        //setFlipped(!flipped);
-        // 정확하게 명제 해주는게 더 좋다
-        reset();
-        setFlipped((current) => !current);
-      };
-      return (
-        <div>
-          <h3>KM 2 M</h3>
-          <div>
-            <label for="km">km</label>
-            <input
-              id="km"
-              type="number"
-              placeholder="km"
-              style={{ backgroundColor: "blue" }}
-              onChange={onChange}
-              // 삼항 연산자 true면 amount*60 값을 아니면 그대로 amount
-              value={flipped ? amount * 1.609 : amount}
-              disabled={flipped}
-            />
-          </div>
-          <div>
-            <label for="miles">miles</label>
-            <input
-              id="miles"
-              type="number"
-              placeholder="miles"
-              style={{ color: "blue" }}
-              onChange={onChange}
-              // 삼항 연산자 true면 amount 값을 그대로 아니면 /60
-              value={flipped ? amount : Math.round(amount / 1.609)}
-              disabled={!flipped}
-            />
-          </div>
-          <button onClick={reset}>Reset</button>
-          <button onClick={onFlip}>Flip</button>
-        </div>
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+          }}
+        >
+          {props.banana}
+          {props.text}
+        </button>
       );
     }
 
     function App() {
-      const [index, setIndex] = React.useState("0");
-      const onSelect = (e) => {
-        setIndex(e.target.value);
-      };
       return (
         <div>
-          <h1>Super Converter</h1>
-          <hr />
-          <select value={index} onChange={onSelect}>
-            <option value="0">Minutes & Hours</option>
-            <option value="1">Km & Miles</option>
-          </select>
-          {
-            /* 자바스크립 쓸거면 중괄호를 열어라 */
-            /* 삼항 연산자 */
-            index === "0" ? <MinutesToHours /> : null
-          }
-          {index === "1" ? <KmToMiles /> : null}
+          <Btn banana="Save Chang" />
+          <Btn text="Continue" />
         </div>
       );
     }
