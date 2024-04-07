@@ -20,7 +20,11 @@
       const [counter, setCounter] = React.useState(0);
       const onClick = () => {
         // render 하는 것
-        setCounter(counter + 1);
+        // 둘다 동일 코드이지만 밑에가 더 안전한다.
+        // setCounter(counter + 1);
+        // 안전
+        setCounter((counter) => current + 1);
+
         console.log(counter);
       };
       return (
