@@ -17,20 +17,34 @@
     const root = document.getElementById("root");
 
     function App() {
-      const [counter, setCounter] = React.useState(0);
-      const onClick = () => {
-        // render 하는 것
-        // 둘다 동일 코드이지만 밑에가 더 안전한다.
-        // setCounter(counter + 1);
-        // 안전
-        setCounter((counter) => current + 1);
-
-        console.log(counter);
+      const [minutes, setMinutes] = React.useState();
+      const onChange = (e) => {
+        setMinutes(e.target.value);
       };
       return (
         <div>
-          <h3>Total clicks: {counter}</h3>
-          <button onClick={onClick}>Clicke me</button>
+          <h1
+            // class가 아니라 className이라고 해야한다.
+            className="hi"
+          >
+            Super Converter
+          </h1>
+          <label
+            // for가 아니라 htmlfor라고 해야한다.
+            htmlfor="minutes"
+          >
+            Minutes
+          </label>
+          <input
+            value={minutes}
+            id="minutes"
+            type="number"
+            placeholder="Minuter"
+            onChange={onChange}
+          />
+          <h4>You want to convert {minutes}</h4>
+          <label htmlfor="hours">Hours</label>
+          <input id="hours" type="number" placeholder="Hours" />
         </div>
       );
     }
