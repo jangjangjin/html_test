@@ -16,8 +16,8 @@
     const root = document.querySelector("body");
 
     // 인자는 하나다 2개는 없다 보낸 모든게 다 오브젝트가 된다.
-    function Btn(props) {
-      console.log(props);
+    // 오브젝트여서 중괄호로 열여야한다.
+    function Btn({ banana, text }) {
       return (
         <button
           style={{
@@ -28,8 +28,8 @@
             borderRadius: 10,
           }}
         >
-          {props.banana}
-          {props.text}
+          {banana}
+          {text}
         </button>
       );
     }
